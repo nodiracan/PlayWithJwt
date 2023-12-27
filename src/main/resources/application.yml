@@ -1,0 +1,25 @@
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwt
+    username: postgres
+    password: 1111
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    operations-sorter: method
+  api-docs:
+    path: /api/docs
