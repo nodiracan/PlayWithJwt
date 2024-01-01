@@ -1,5 +1,6 @@
 package com.example.playwithjwt.configs;
 
+import com.example.playwithjwt.configs.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,8 @@ public class SecurityConfig {
     private final AuthenticationProvider authenticationProvider;
 
     private static final String[] WHITE_LIST = {
-            "/api/v1/**",
+            "/api/v1/auth/register",
+            "/api/v1/auth/login",
             "/swagger-ui/**",
             "/api/docs/**"
     };
@@ -31,6 +33,8 @@ public class SecurityConfig {
 
         httpSecurity
                 .csrf()
+                .disable()
+                .cors()
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers(WHITE_LIST)

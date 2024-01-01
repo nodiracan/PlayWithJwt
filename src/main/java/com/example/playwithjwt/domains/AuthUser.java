@@ -1,11 +1,10 @@
 package com.example.playwithjwt.domains;
 
 
+import com.example.playwithjwt.domains.base.Auditable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Where;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +18,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class AuthUser implements UserDetails {
+@Where(clause = "deleted = 'false'")
+public class AuthUser extends Auditable implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
